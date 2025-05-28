@@ -1,0 +1,122 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Professional Clearview - Light Theme */
+    --background: 210 60% 98%; /* Very Light Cool Off-White */
+    --foreground: 220 25% 20%; /* Dark Desaturated Blue-Gray (Text) */
+
+    --card: 210 60% 96%; /* Light Cool Off-Blue for cards */
+    --card-foreground: 220 25% 20%; /* Darker text for these cards */
+
+    --popover: 0 0% 100%; /* Pure White for popovers */
+    --popover-foreground: 220 25% 15%;
+
+    --primary: 220 80% 55%; /* Strong, Confident Blue */
+    --primary-foreground: 210 40% 98%; /* Light text on primary */
+
+    --secondary: 190 65% 50%; /* Calming, Professional Teal */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 94%; /* Light Cool Gray */
+    --muted-foreground: 210 35% 55%; /* Medium Cool Gray */
+
+    --accent: 250 70% 60%; /* Modern Violet */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+
+    --destructive: 0 75% 55%; /* Clear Red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%; /* Light Gray-Blue Border */
+    --input: 210 20% 96%; /* Very Light Gray Input Background */
+    --ring: hsl(var(--primary)); /* Ring uses Primary Blue */
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: hsl(var(--accent));
+    --chart-4: 220 80% 70%; /* Lighter version of primary blue */
+    --chart-5: 190 65% 65%; /* Lighter version of secondary teal */
+    
+    --radius: 0.5rem;
+
+    /* Sidebar specific theme variables - Light Theme Version */
+    --sidebar-background: 210 50% 96%; /* Slightly more saturated light blue-gray */
+    --sidebar-foreground: 220 25% 25%; /* Darker text for sidebar */
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--accent));
+    --sidebar-accent-foreground: hsl(var(--accent-foreground));
+    --sidebar-border: 210 20% 85%;
+    --sidebar-ring: hsl(var(--secondary));
+  }
+
+  .dark {
+    /* Quantum Clarity - Dark Theme */
+    --background: 222 45% 8%; /* Very Dark Deep Navy */
+    --foreground: 210 40% 98%; /* Light Cool Off-White for text */
+
+    --card: 222 40% 16%; /* Dark Navy - lighter and more saturated */
+    --card-foreground: 210 40% 95%; /* Light Cool Off-White for text on dark cards */
+
+    --popover: 222 35% 12%; /* Darker Popover Background */
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 215 85% 65%; /* Brighter Luminous Blue */
+    --primary-foreground: 220 20% 98%; 
+
+    --secondary: 190 70% 60%; /* More Vibrant Teal */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 20% 20%; /* Muted Dark Blue-Gray */
+    --muted-foreground: 220 15% 65%; /* Softer Gray */
+
+    --accent: 260 75% 70%; /* Brighter Violet */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%; /* Clear Red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 20% 25%; /* Muted Blue-Gray Border */
+    --input: 215 20% 20%; /* Dark Input Background */
+    --ring: hsl(var(--primary));
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: hsl(var(--accent));
+    --chart-4: 210 75% 70%; 
+    --chart-5: 195 65% 65%; 
+    
+    /* Sidebar specific theme variables - Dark Theme Version */
+    --sidebar-background: 222 40% 11%; 
+    --sidebar-foreground: 0 0% 100%; 
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--accent));
+    --sidebar-accent-foreground: hsl(var(--accent-foreground));
+    --sidebar-border: 215 20% 22%; 
+    --sidebar-ring: hsl(var(--secondary));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .pause-animation {
+    animation-play-state: paused;
+  }
+}
+
