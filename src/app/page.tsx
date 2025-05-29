@@ -1,70 +1,29 @@
 "use client";
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { VideoPreviewSection } from '@/components/sections/video-preview-section';
-import { TrustedBySection } from '@/components/sections/trusted-by-section';
-import { AdvancedAiToolsSection } from '@/components/sections/advanced-ai-tools-section';
-import { AiAvatarsSection } from '@/components/sections/ai-avatars-section';
-import { CustomAvatarsSection } from '@/components/sections/custom-avatars-section';
-import { HowToUseSection } from '@/components/sections/how-to-use-section';
-import { InspirationSection } from '@/components/sections/inspiration-section';
-import { IntelligentVideoCreationSection } from '@/components/sections/intelligent-video-creation-section';
-import { GenerativeAiCapabilitiesSection } from '@/components/sections/generative-ai-capabilities-section';
-import { AiPromptToolsSection } from '@/components/sections/ai-prompt-tools-section';
-import { TeamsWorkspacesSection } from '@/components/sections/teams-workspaces-section';
-import { EnterpriseSection } from '@/components/sections/enterprise-section';
-import { AdvancedCapabilitiesSection } from '@/components/sections/advanced-capabilities-section';
-import { CustomerStoriesSection } from '@/components/sections/customer-stories-section';
-import { FaqSection } from '@/components/sections/faq-section';
-import { FloatingChatButton } from '@/components/floating-chat-button';
-import { NewsAndUpdatesSection } from '@/components/sections/news-and-updates-section';
-import { CallToActionSection } from '@/components/sections/call-to-action-section';
-import { Rocket } from 'lucide-react';
-import { useEffect, useRef } from 'react';
-
-// Define interfaces for our animation objects
-interface Sphere {
-  x: number;
-  y: number;
-  radius: number;
-  rotation: number;
-  rotationSpeed: number;
-  pulse: number;
-  pulseSpeed: number;
-}
-
-interface DataStream {
-  angle: number;
-  length: number;
-  width: number;
-  color: string;
-  opacity: number;
-  speed: number;
-  pulseSpeed: number;
-}
-
-interface Particle {
-  x: number;
-  y: number;
-  radius: number;
-  color: string;
-  velocityX: number;
-  velocityY: number;
-  opacity: number;
-  glowIntensity: number;
-}
-
-interface NebulaLayer {
-  x: number;
-  y: number;
-  radius: number;
-  color: string;
-  opacity: number;
-  pulseSpeed: number;
-}
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { VideoPreviewSection } from "@/components/sections/video-preview-section";
+import { TrustedBySection } from "@/components/sections/trusted-by-section";
+import { AdvancedAiToolsSection } from "@/components/sections/advanced-ai-tools-section";
+import { AiAvatarsSection } from "@/components/sections/ai-avatars-section";
+import { CustomAvatarsSection } from "@/components/sections/custom-avatars-section";
+import { HowToUseSection } from "@/components/sections/how-to-use-section";
+import { InspirationSection } from "@/components/sections/inspiration-section";
+import { IntelligentVideoCreationSection } from "@/components/sections/intelligent-video-creation-section";
+import { GenerativeAiCapabilitiesSection } from "@/components/sections/generative-ai-capabilities-section";
+import { AiPromptToolsSection } from "@/components/sections/ai-prompt-tools-section";
+import { TeamsWorkspacesSection } from "@/components/sections/teams-workspaces-section";
+import { EnterpriseSection } from "@/components/sections/enterprise-section";
+import { AdvancedCapabilitiesSection } from "@/components/sections/advanced-capabilities-section";
+import { CustomerStoriesSection } from "@/components/sections/customer-stories-section";
+import { FaqSection } from "@/components/sections/faq-section";
+import { FloatingChatButton } from "@/components/floating-chat-button";
+import { NewsAndUpdatesSection } from "@/components/sections/news-and-updates-section";
+import { CallToActionSection } from "@/components/sections/call-to-action-section";
+import { Rocket } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export default function HomePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -78,7 +37,7 @@ export default function HomePage() {
     if (!ctx) return;
 
     // Track mouse position for interaction effects
-    const handleMouseMove = (e: MouseEvent): void => {
+    const handleMouseMove = (e) => {
       mouseRef.current = {
         x: e.clientX,
         y: e.clientY,
@@ -87,7 +46,7 @@ export default function HomePage() {
 
     // Animation parameters - initialize all objects upfront
     let time = 0;
-    let sphere: Sphere = {
+    let sphere = {
       x: 0,
       y: 0,
       radius: 0,
@@ -96,9 +55,9 @@ export default function HomePage() {
       pulse: 0,
       pulseSpeed: 0.02,
     };
-    let dataStreams: DataStream[] = [];
-    let particles: Particle[] = [];
-    let nebulaLayers: NebulaLayer[] = [];
+    let dataStreams = [];
+    let particles = [];
+    let nebulaLayers = [];
 
     // Color palette
     const colors = {
@@ -135,7 +94,7 @@ export default function HomePage() {
       };
 
       // Create data streams
-      dataStreams = [] as DataStream[];
+      dataStreams = [];
       const streamCount = 18; // Number of streams
 
       for (let i = 0; i < streamCount; i++) {
@@ -160,7 +119,7 @@ export default function HomePage() {
       }
 
       // Create nebula layers
-      nebulaLayers = [] as NebulaLayer[];
+      nebulaLayers = [];
       const layerCount = 4;
 
       for (let i = 0; i < layerCount; i++) {
@@ -183,7 +142,7 @@ export default function HomePage() {
       }
 
       // Create particles
-      particles = [] as Particle[];
+      particles = [];
       const particleCount = 110;
 
       for (let i = 0; i < particleCount; i++) {
@@ -339,7 +298,7 @@ export default function HomePage() {
     }
 
     // Draw wireframe on the sphere
-    function drawSphereWireframe(x: number, y: number, radius: number, rotation: number): void {
+    function drawSphereWireframe(x, y, radius, rotation) {
       const lineCount = 9;
 
       ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`;
@@ -426,7 +385,7 @@ export default function HomePage() {
     }
 
     // Animation loop with safety checks
-    function animate(): void {
+    function animate() {
       // Only start animating when initialization is complete
       if (!canvas || !ctx || !sphere || !sphere.radius) {
         requestAnimationFrame(animate);
@@ -449,7 +408,7 @@ export default function HomePage() {
 
     // Set up event listeners first, then initialize and start animation
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("mousemove", handleMouseMove as EventListener);
+    window.addEventListener("mousemove", handleMouseMove);
 
     // Initialize everything before starting animation
     resizeCanvas();
@@ -520,20 +479,7 @@ export default function HomePage() {
         <EnterpriseSection />
         <AdvancedCapabilitiesSection />
 
-        <section className="pt-10 md:pt-12 pb-0 bg-background">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-8 md:mb-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-                We&apos;re Here to Answer All Your Questions
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                If you&apos;re new to AI Avatar Agent or looking to supercharge your video
-                creation workflow, our resources below will help you learn more about
-                our features and see what others have built.
-              </p>
-            </div>
-          </div>
-        </section>
+        
 
         <CustomerStoriesSection />
         <FaqSection />
