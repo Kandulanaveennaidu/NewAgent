@@ -112,6 +112,7 @@ export default function HomePage() {
 
     // Set canvas dimensions to match window size
     const resizeCanvas = () => {
+      if (!canvas) return; // Null check
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       // Re-initialize elements that depend on canvas size
@@ -120,6 +121,8 @@ export default function HomePage() {
 
     // Initialize elements based on canvas size
     function initElements(): void {
+      if (!canvas) return; // Null check added to satisfy TypeScript
+      
       // Create sphere
       const minDimension = Math.min(canvas.width, canvas.height);
       const sphereRadius = minDimension * 0.15; // 15% of smaller dimension
@@ -209,7 +212,9 @@ export default function HomePage() {
     }
 
     // Draw background
-    function drawBackground() {
+    function drawBackground(): void {
+      if (!canvas || !ctx) return; // Add ctx null check
+      
       // Create radial gradient for base background
       const gradient = ctx.createRadialGradient(
         canvas.width / 2,
@@ -230,7 +235,9 @@ export default function HomePage() {
     }
 
     // Draw nebula layers
-    function drawNebulaLayers() {
+    function drawNebulaLayers(): void {
+      if (!ctx) return; // Add ctx null check
+      
       nebulaLayers.forEach((layer) => {
         // Update layer pulse
         const pulse = Math.sin(time * layer.pulseSpeed) * 0.3 + 0.7;
@@ -260,7 +267,9 @@ export default function HomePage() {
     }
 
     // Draw particles
-    function drawParticles() {
+    function drawParticles(): void {
+      if (!canvas || !ctx) return; // Add ctx null check
+      
       particles.forEach((particle) => {
         // Move particles
         particle.x += particle.velocityX;
@@ -298,8 +307,8 @@ export default function HomePage() {
     }
 
     // Draw holographic sphere with safety check
-    function drawSphere() {
-      if (!sphere || !sphere.radius) return; // Safety check
+    function drawSphere(): void {
+      if (!sphere || !sphere.radius || !ctx) return; // Add ctx null check
 
       const x = sphere.x;
       const y = sphere.y;
@@ -340,6 +349,8 @@ export default function HomePage() {
 
     // Draw wireframe on the sphere
     function drawSphereWireframe(x: number, y: number, radius: number, rotation: number): void {
+      if (!ctx) return; // Add ctx null check
+      
       const lineCount = 9;
 
       ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`;
@@ -376,8 +387,8 @@ export default function HomePage() {
     }
 
     // Draw data streams with safety check
-    function drawDataStreams() {
-      if (!sphere || !sphere.radius) return; // Safety check
+    function drawDataStreams(): void {
+      if (!sphere || !sphere.radius || !ctx) return; // Add ctx null check
 
       dataStreams.forEach((stream) => {
         const angle = stream.angle + time * stream.speed;
@@ -426,7 +437,7 @@ export default function HomePage() {
     }
 
     // Animation loop with safety checks
-    function animate() {
+    function animate(): void {
       // Only start animating when initialization is complete
       if (!canvas || !ctx || !sphere || !sphere.radius) {
         requestAnimationFrame(animate);
