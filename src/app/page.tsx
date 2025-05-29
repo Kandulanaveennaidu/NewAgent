@@ -25,6 +25,47 @@ import { CallToActionSection } from "@/components/sections/call-to-action-sectio
 import { Rocket } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+// Define interfaces for our animation objects
+interface Sphere {
+  x: number;
+  y: number;
+  radius: number;
+  rotation: number;
+  rotationSpeed: number;
+  pulse: number;
+  pulseSpeed: number;
+}
+
+interface DataStream {
+  angle: number;
+  length: number;
+  width: number;
+  color: string;
+  opacity: number;
+  speed: number;
+  pulseSpeed: number;
+}
+
+interface Particle {
+  x: number;
+  y: number;
+  radius: number;
+  color: string;
+  velocityX: number;
+  velocityY: number;
+  opacity: number;
+  glowIntensity: number;
+}
+
+interface NebulaLayer {
+  x: number;
+  y: number;
+  radius: number;
+  color: string;
+  opacity: number;
+  pulseSpeed: number;
+}
+
 export default function HomePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -46,7 +87,7 @@ export default function HomePage() {
 
     // Animation parameters - initialize all objects upfront
     let time = 0;
-    let sphere = {
+    let sphere: Sphere = {
       x: 0,
       y: 0,
       radius: 0,
@@ -55,9 +96,9 @@ export default function HomePage() {
       pulse: 0,
       pulseSpeed: 0.02,
     };
-    let dataStreams = [];
-    let particles = [];
-    let nebulaLayers = [];
+    let dataStreams: DataStream[] = [];
+    let particles: Particle[] = [];
+    let nebulaLayers: NebulaLayer[] = [];
 
     // Color palette
     const colors = {
@@ -78,7 +119,7 @@ export default function HomePage() {
     };
 
     // Initialize elements based on canvas size
-    function initElements() {
+    function initElements(): void {
       // Create sphere
       const minDimension = Math.min(canvas.width, canvas.height);
       const sphereRadius = minDimension * 0.15; // 15% of smaller dimension
@@ -94,7 +135,7 @@ export default function HomePage() {
       };
 
       // Create data streams
-      dataStreams = [];
+      dataStreams = [] as DataStream[];
       const streamCount = 18; // Number of streams
 
       for (let i = 0; i < streamCount; i++) {
@@ -119,7 +160,7 @@ export default function HomePage() {
       }
 
       // Create nebula layers
-      nebulaLayers = [];
+      nebulaLayers = [] as NebulaLayer[];
       const layerCount = 4;
 
       for (let i = 0; i < layerCount; i++) {
@@ -142,7 +183,7 @@ export default function HomePage() {
       }
 
       // Create particles
-      particles = [];
+      particles = [] as Particle[];
       const particleCount = 110;
 
       for (let i = 0; i < particleCount; i++) {
@@ -298,7 +339,7 @@ export default function HomePage() {
     }
 
     // Draw wireframe on the sphere
-    function drawSphereWireframe(x, y, radius, rotation) {
+    function drawSphereWireframe(x: number, y: number, radius: number, rotation: number): void {
       const lineCount = 9;
 
       ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`;
@@ -408,7 +449,7 @@ export default function HomePage() {
 
     // Set up event listeners first, then initialize and start animation
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove as EventListener);
 
     // Initialize everything before starting animation
     resizeCanvas();
