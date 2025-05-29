@@ -23,6 +23,7 @@ import { FloatingChatButton } from '@/components/floating-chat-button';
 import { NewsAndUpdatesSection } from '@/components/sections/news-and-updates-section';
 import { CallToActionSection } from '@/components/sections/call-to-action-section';
 import { Rocket } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 export default function HomePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
