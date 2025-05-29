@@ -37,7 +37,7 @@ export default function HomePage() {
     if (!ctx) return;
 
     // Track mouse position for interaction effects
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = {
         x: e.clientX,
         y: e.clientY,
