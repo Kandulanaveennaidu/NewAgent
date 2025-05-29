@@ -45,6 +45,20 @@ const faqData: FaqItem[] = [
 export const FaqSection: FC = () => {
   return (
     <section className="pt-0 pb-12 md:pb-20 bg-background"> {/* Adjusted padding */}
+    <section className="pt-10 md:pt-12 pb-0 bg-background">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-8 md:mb-10">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+                We&apos;re Here to Answer All Your Questions
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                If you&apos;re new to AI Avatar Agent or looking to supercharge
+                your video creation workflow, our resources below will help you
+                learn more about our features and see what others have built.
+              </p>
+            </div>
+          </div>
+        </section>
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="w-full space-y-4">
